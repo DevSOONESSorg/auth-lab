@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<h1>ログイン</h1>
+<% if (errors.length) { %>
+  <ul class="errors"><% for (const e of errors) { %><li><%= e %></li><% } %></ul>
+<% } %>
+<form method="post" action="/login" class="form">
+  <label>ログインID <input type="text" name="username" value="<%= username %>" autocomplete="username" autofocus></label>
+  <label>パスワード <input type="password" name="password" autocomplete="current-password"></label>
+  <div class="form-actions"><button type="submit" class="primary">ログイン</button></div>
+</form>
+<div class="hint">
+  <strong>教材用の初期ユーザー</strong>（パスワードはすべて <code>password</code>）<br>
+  <code>admin</code>（情シス）／ <code>higa</code>（一般社員）／ <code>kinjo</code>（初期パスワード状態の一般社員）
+</div>
+<%- include('partials/footer') %>

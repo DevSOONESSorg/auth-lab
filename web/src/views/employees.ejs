@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<h1>社員一覧（社員マスタAPIから取得）</h1>
+<p class="lead">接続先: <code><%= apiBase %>/employees</code> ／ 認証方式: <strong><%= mode %></strong>（.env の API_AUTH_MODE）</p>
+
+<% if (error) { %>
+  <ul class="errors"><li><%= error %></li></ul>
+  <p>ヒント：web と api の両方が同じ認証方式・同じ鍵になっているか確認する。<code>.env</code> を変えたら <code>docker compose up</code> をやり直す。</p>
+<% } else if (employees.length === 0) { %>
+  <p class="empty">社員がいません。</p>
+<% } else { %>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>社員番号</th><th>氏名</th><th>部署</th><th>メール</th></tr></thead>
+  <tbody>
+    <% for (const e of employees) { %>
+      <tr><td><%= e.employee_no %></td><td><%= e.name %></td><td><%= e.department %></td><td><%= e.email %></td></tr>
+    <% } %>
+  </tbody>
+</table>
+</div>
+<% } %>
+<%- include('partials/footer') %>

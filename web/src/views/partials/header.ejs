@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> | <%= appName %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/"><%= appName %></a>
+    <nav>
+      <% if (currentUser) { %>
+        <a href="/">ホーム</a>
+        <a href="/employees">社員一覧（API）</a>
+        <% if (currentUser.role === 'admin') { %>
+          <a href="/admin/users">ユーザー管理</a>
+          <a href="/admin/users/logs">監査ログ</a>
+        <% } %>
+        <span class="me"><%= currentUser.display_name %>（<%= roleLabels[currentUser.role] %>）</span>
+        <form method="post" action="/logout"><button type="submit" class="small">ログアウト</button></form>
+      <% } else { %>
+        <a href="/login">ログイン</a>
+      <% } %>
+    </nav>
+  </header>
+  <main class="container">
+    <% if (msg) { %><div class="flash"><%= msg %></div><% } %>

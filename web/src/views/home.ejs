@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<h1>ログインできています</h1>
+
+<h2>いま何が起きているか</h2>
+<dl class="detail">
+  <dt>あなた</dt><dd><%= currentUser.display_name %>（ログインID: <%= currentUser.username %> / 役割: <%= roleLabels[currentUser.role] %>）</dd>
+  <dt>セッションID</dt><dd><code><%= sessionId %></code></dd>
+  <dt>Cookie</dt><dd>ブラウザには <code>sid</code> という名前で、このセッションIDに署名を付けたものだけが保存されています。あなたの名前や役割は Cookie には入っていません（サーバー側にあります）。</dd>
+  <dt>有効期限</dt><dd>最後の操作から <%= cookieMaxAgeMin %> 分。過ぎると再ログインになります。</dd>
+</dl>
+
+<h2>やってみる</h2>
+<ol class="steps">
+  <li>ブラウザの開発者ツール → Application（Storage）→ Cookies で <code>sid</code> を探す。値を読んでも意味が分からないことを確認する。</li>
+  <li>その Cookie を削除して、このページを再読み込みする → ログイン画面に戻される。</li>
+  <li>別のブラウザ（またはシークレットウィンドウ）で同じIDでログインする → セッションIDが違うことを確認する。</li>
+  <li><code>src/config.js</code> の <code>SESSION_MAX_AGE_MS</code> を 1分にして、待ってから操作する。</li>
+  <li>ターミナルで <code>docker compose restart web</code> してから再読み込みする → 全員ログアウトになる。なぜかを README で確認する。</li>
+  <li>パスワードを6回間違えてみる。</li>
+</ol>
+<%- include('partials/footer') %>
