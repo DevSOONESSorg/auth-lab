@@ -118,12 +118,13 @@ function listLogs(limit = 100) {
 
 // ---------- 初期データ ----------
 // ユーザーが1人もいないときだけ作る。パスワードは教材用のダミー。本番では絶対に使わない。
+// ※ 'password' のような有名な文字列にすると、Chrome が「漏えいしたパスワードです」と警告を出すので避けている
 function seedIfEmpty() {
   const count = db.prepare('SELECT COUNT(*) AS c FROM users').get().c;
   if (count > 0) return;
-  create({ username: 'admin', password: 'password', display_name: '情シス 新垣', role: 'admin', must_change_password: 0 });
-  create({ username: 'higa', password: 'password', display_name: '比嘉', role: 'staff', must_change_password: 0 });
-  create({ username: 'kinjo', password: 'password', display_name: '金城', role: 'staff', must_change_password: 1 });
+  create({ username: 'admin', password: 'Taiken-2026', display_name: '情シス 新垣', role: 'admin', must_change_password: 0 });
+  create({ username: 'higa', password: 'Taiken-2026', display_name: '比嘉', role: 'staff', must_change_password: 0 });
+  create({ username: 'kinjo', password: 'Taiken-2026', display_name: '金城', role: 'staff', must_change_password: 1 });
   log('system', 'seed', null, '初期ユーザーを作成');
 }
 seedIfEmpty();

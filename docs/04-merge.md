@@ -36,7 +36,7 @@ auth-lab の `web/src/auth/` はそのまま持っていける形で作ってあ
 5. bihin-app の `src/config.js` に、auth-lab の `config.js` から `SESSION_SECRET` / `SESSION_MAX_AGE_MS` / `LOGIN_MAX_FAILS` / `LOCK_MINUTES` / `PASSWORD_MIN` / `ROLE_LABELS` をコピーして足す（`auth/` のコードがこれらを参照する）
 6. `auth/users.js` は `require('../db')` で bihin-app の `db.js` を使うので、users / audit_logs テーブルの定義を bihin-app の `db.js` に追加する（auth-lab の `db.js` からコピー）
 7. `views/partials/header.ejs` にログイン中のユーザー名とログアウトボタンを足す
-8. 起動して `admin` / `password` でログインできることを確認する
+8. 起動して `admin` / `Taiken-2026` でログインできることを確認する
 
 ## 権限を付ける
 

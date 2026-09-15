@@ -12,7 +12,7 @@
 ### 1. ログインしてみる
 
 1. `docker compose up --build` で起動し、<http://localhost:4000> を開く
-2. `admin` / `password` でログインする
+2. `admin` / `Taiken-2026` でログインする
 3. ホーム画面に出ている「セッションID」と「Cookie」の説明を読む
 
 ### 2. Cookie を見る
@@ -76,5 +76,5 @@
 ## 発展（余裕があれば）
 
 - `web/src/db.js` の users テーブルを SQLite Viewer で開き、`password_hash` が `$2a$10$...` で始まる意味不明な文字列であることを確認する
-- 同じパスワード `password` の `admin` と `higa` で、ハッシュが違う理由を調べる（ヒント：ソルト）
+- 同じパスワード `Taiken-2026` の `admin` と `higa` で、ハッシュが違う理由を調べる（ヒント：ソルト）
 - `secure: false` を `true` にすると http://localhost でログインできなくなる理由を調べる
