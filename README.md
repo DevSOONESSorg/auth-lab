@@ -3,7 +3,7 @@
 「ログインって中で何が起きているの？」を、動くアプリを触りながら4段階で学ぶ教材です。
 最後は [bihin-app（備品貸出管理システム）](https://github.com/DevSOONESSorg/bihin-app) にログインを付けるところまで行きます。
 
-![ログイン画面](docs/images/login.png)
+![ログイン画面](docs/images/login-screen.png)
 
 ## 4つの段階
 
